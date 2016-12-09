@@ -28,13 +28,6 @@ function Food()
         {
             score ++;
             this.getPosOnGrid();
-
-            if (score != 0) {
-                for (var i = score; i > 0; i--)
-                {
-                   snake.posHistory[i] = snake.posHistory[i-1];
-                }
-            }
         }
     }
 }

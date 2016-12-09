@@ -27,6 +27,10 @@ function draw() {
 
     snake.show();
     food.show();
+
+    var string = "Score : "+score;
+    fill(255);
+    text(string, 25, 25);
 }
 
 function keyPressed() {
