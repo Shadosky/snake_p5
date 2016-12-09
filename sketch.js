@@ -1,33 +1,42 @@
-var s;
-var f;
+var snake;
+var food;
 var scl = 20;
+var rows;
+var cols;
+var score = 0;
 
 function setup() {
     createCanvas(640, 480);
     frameRate(10);
-    s = new Snake();
-    f = new Food();
+    snake = new Snake();
+    food = new Food();
+
+    rows = width/scl;
+    cols = height/scl;
+
+    food.getPosOnGrid();
 }
 
 function draw() {
     background(51);
-    s.update();
-    s.show();
-    f.show();
+
+    food.eat();
+
+    snake.update();
+    snake.die();
+
+    snake.show();
+    food.show();
 }
 
 function keyPressed() {
     if (keyCode === LEFT_ARROW) {
-        s.xspeed = -1;
-        s.yspeed = 0;
+        snake.dir(-1, 0);
     } else if (keyCode === RIGHT_ARROW) {
-        s.xspeed = 1;
-        s.yspeed = 0;
+        snake.dir(1, 0);
     } else if (keyCode === UP_ARROW) {
-        s.yspeed = -1;
-        s.xspeed = 0;
+        snake.dir(0, -1);
     } else if (keyCode === DOWN_ARROW) {
-        s.yspeed = 1;
-        s.xspeed = 0;
+        snake.dir(0, 1);
     }
 }
