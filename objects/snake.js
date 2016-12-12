@@ -29,8 +29,25 @@ function Snake()
             }
         }
 
-        this.x = constrain(this.x + (this.xspeed*scl), 0,width-scl);
-        this.y = constrain(this.y + (this.yspeed*scl), 0, height-scl);
+        //use those to die when u touch a wall
+
+        //this.x = constrain(this.x + (this.xspeed*scl), 0,width-scl);
+        //this.y = constrain(this.y + (this.yspeed*scl), 0, height-scl);
+
+        this.x = this.x + (this.xspeed*scl);
+        this.y = this.y + (this.yspeed*scl);
+
+        if (this.x > width-scl) {
+            this.x = 0;
+        } else if (this.x < 0) {
+            this.x = width-scl;
+        }
+
+        if (this.y > height-scl) {
+            this.y = 0;
+        } else if (this.y < 0) {
+            this.y = height-scl;
+        }
 
         this.posHistory[0] = createVector(this.x, this.y);
     }
